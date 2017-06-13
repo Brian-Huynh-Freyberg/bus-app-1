@@ -70,7 +70,6 @@
 
               <section class="from-to-desktop"> <!--From-to input from user for DESKTOP view-->
                   <section class="from-to-text">
-                      <section class="bus-route">abcdefgh</section>
                       <section type="text" name="from" class="from"> <p>FROM:</p></section>
                       <section class="to"><p>TO:</p></section>
                   </section>
@@ -84,10 +83,20 @@
 
           <section class="from-to"> <!-- From-to input from user for MOBILE view -->
               <section class="from-to-text">
+                  <section type="text" name="from" class="from"> <p>ROUTE:</p></section>
                   <section type="text" name="from" class="from"> <p>FROM:</p></section>
                   <section class="to"><p>TO:</p></section>
               </section>
               <section class="from-to-input">
+                  <select class="route">
+                          <option>Please choose a route</option>
+                          <option>1.Awapuni / 2.Rugby</option>
+                          <option>3.Highbury / 4.Takaro</option>
+                          <option>5.Cloverlea / 6.Milson</option>
+                          <option>7.Rhodes / 8.Roslyn</option>
+                          <option>9.Rangiora / 10.Brightwater</option>
+                          <option>31.Fernlea / 32.Heights</option>
+                      </select>
                   <input type="text" name="from" class="from-input" placeholder="Departing location">
                   <input type="text" name="to" class="to-input" placeholder="Destination">
               </section>
