@@ -1,0 +1,759 @@
+/*SHARED CODE*/
+
+                    /*GENRAL*/
+
+html {
+        height: 100%;
+    }
+
+    body {
+        margin: 0; /* To make the page goes all the way out */
+        padding: 0; /* Same as above */
+        height: 100%;
+    }
+
+.bus-cond {
+        display: flex;
+        align-items: center;
+        background-color: #86BE3D;
+        height: 50px;
+    }
+
+        .info-icon {
+            width: auto;
+            height: 3vh;
+            margin-left: 10px;
+        }
+
+        .updates {
+            margin-left: 20px;
+            color: white;
+        }
+
+                    /*HOME PAGE*/
+
+input[type="range"] /*Bus slider*/ {
+    width: 80vw;
+    margin: 10px 10px 10px 80px;
+    -webkit-appearance: none;
+    border-radius: 10px;
+    padding: 5px;
+    position: relative;
+}
+input[type="range"]::-webkit-slider-thumb /*The sliding bus*/{
+    -webkit-appearance: none;
+    background-image: url(buses-no-margin.png);
+    background-size: 100px;
+    z-index: 99;
+    width: 100px;
+    position: relative;
+    height: 40px;
+    padding: 10px;
+}
+
+                    /* ACCOUNT PAGE */
+
+ .log-out {
+        background-image: url("GoHorizons%20Low%20Opacity%20Multiple%20Arrow%20Background.png");
+        height: 45vh;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+    }
+    .log-out button {
+        width: 35vw;
+        height: 5vh;
+        margin-bottom: 10px;
+        font-size: 15px;
+    }
+
+                    /*TIMETABLES PAGE*/
+
+    .timetables p {font-size: 20px;}
+    .page-title p {font-size: 25px;}
+
+
+    .page-title {
+        display: flex;
+        justify-content: center;
+    }
+
+    /*Individual timetables*/
+
+    .back {
+        display: flex;
+        text-align: center;
+        align-items: center;
+        background-color: #86BE3D;
+        flex-wrap: wrap;
+    }
+
+    .back-box a:link {
+        margin: 0 !important;
+        text-decoration: none; /*Romve the underline and blue colour of the link*/
+    }
+
+    .back-box a:visited {
+        margin: 0 !important;
+        color: black; /*Keep text-link as black even after visited*/
+    }
+
+    .back-box a:active {
+        margin: 0 !important;
+    }
+
+    .back-box a:hover {
+        margin: 0 !important;
+    }
+
+        .back-arrow {
+            display: flex;
+            width: auto;
+            height: 3vh;
+            margin-left: 10px;
+        }
+
+        .back-text {
+            display: flex;
+            margin-left: 10px;
+        }
+
+    .individual-timetables {
+        width: 100vw;
+        height: auto;
+    }
+
+                /*FAVOURITES PAGE*/
+
+.add-and-edit-icon {
+        display: flex;
+        width: 100vw;
+    }
+        .add-box, .edit-box {
+            display: flex;
+            align-items: center;
+            width: 50vw;
+        }
+        .add-box {justify-content: flex-start;}
+        .edit-box {justify-content: flex-end;}
+        .icons {
+            display: flex;
+            width: 30px;
+            padding: 10px;
+        }
+
+                /*SEARCH-RESULT-PAGE*/
+
+    .time {
+        display: flex;
+/*        width: 100vw;*/
+        justify-content: center;
+    }
+    .duration {
+        display: flex;
+    }
+    /*Economisation*/
+    .result a:link, .result-desktop a:link {text-decoration: none; color: black;}
+    .result a:visited, .result-desktop a:visited {color: black;}
+
+
+                /*FOOTER*/
+
+    footer {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        background-color: #86BE3D;
+        margin-top: 10px;
+    }
+
+
+
+@media (max-width: 599px) /* MOBLIE View */ {
+
+                            /*GENERAL*/
+
+
+
+    .menu {
+        width: 70px;
+        height: 88.4vh;
+        background-color: #36A7E9;
+        position: absolute; /* Menu position would always be the same no matter what */
+        top:90px;
+        left:-70px; /* Move it off screen to start with */
+        transition: all 0.5s; /* Speed of transition */
+    }
+
+        .menu-icons-box {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 16.66666666%
+        }
+
+        .menu-icons {
+            width: 30px;
+            padding: 15px;
+        }
+        .menu section:hover, .menu a:active {
+            background-color: #FFDC01;
+        }
+        .menu a:link {text-decoration: none; color: black;}/* Removing the defaults (underline and blue) for a link */
+        .menu a:visited {color: black;}
+        .menu p {margin: 0px 0px 5px 0px}
+        .favourite {display: none;} /*Hiding that last box in the menu while in MOBILE */
+
+    .active .menu {
+        left:0px;
+    }
+
+    .outside-most-box {
+        display: flex;
+    /*    height: 100vh;*/
+        flex-direction: column; /*Goes from top to bottom, not left to right - More suitable for MOBILE */
+    }
+
+
+    .menu-and-icons {
+        display: flex;
+        background-size: 100vh;
+        flex-grow: 1;
+    }
+
+        .menu-button-area {
+            display: flex;
+            flex-grow: 1;
+        }
+            .menu-button {
+                padding: 7px 0px 0px 7px; /* Top, right, bottom, left */
+
+            }
+
+        .bus-icon-area {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-grow: 1;
+        }
+            .bus-icon {margin-top: 50px; margin-bottom: 20px;}
+
+        .favourites-area {
+            display: flex;
+            flex-grow: 1;
+            justify-content: flex-end;
+        }
+            .favourite-icon {
+                padding: 7px 7px 0px 0px;
+            }
+
+    .page-title {
+        display: flex;
+        justify-content: center;
+        font-family: sans-serif;
+    }
+    .arrows {
+        display: flex;
+        background-image: url(GoHorizons%20Multiple%20Arrow%20Background%20Desktop%20Ver.png);
+        flex-grow: 2;
+        background-size: 100vh;
+        height: 50px;
+    }
+
+                                /*HOME*/
+
+    .from-to-desktop {display: none;}
+    .from-to {
+        display: flex;
+        width: 100%;
+    }
+        .from-to-text {width: 40%;}
+            .from, .to {
+                text-align: right;
+                padding: 5px;
+            }
+
+        .from-to-input {
+            width: 60%;
+        }
+
+    .from-to input, .from-to textarea {
+        border: 4px solid #B1CFF0;
+        padding: 10px 10px;
+        margin: 7px;
+        width: 44vw;
+
+        border-radius: 5px; /* Curved corners */
+        font-size: 15px;
+    }
+
+    .bus-slider {
+        display: flex;
+        flex-grow: 0.5;
+    }
+
+
+    .map {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+                            /*ACCOUNT PAGE*/
+    .user-icon-area {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 20vh;
+        width: 20vh;
+        border-radius: 10vh;
+        background-color: grey;
+        margin-top: 50px;
+    }
+
+    .user-icon {height: 10vh; width: auto;}
+
+    .user-info-desktop {display: none;} /* Hiding DESKTOP layout */
+    .user-info {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        height: 15vh;
+        padding: 10px;
+        margin: 10px;
+        font-size: 20px;
+    }
+        .email {
+            display: flex;
+            width: 50vh;
+            justify-content: center;
+            align-items: center;
+        }
+        .no-of-favourites {
+            display: flex;
+            width: 50vh;
+            justify-content: center;
+            align-items: center;
+        }
+
+                        /*TIMETABLES PAGE*/
+
+    .timetables p {font-size: 20px;}
+    .page-title p {font-size: 25px;}
+
+
+    .page-title {
+        display: flex;
+        justify-content: center;
+    }
+
+    .timetables {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        flex-grow: 10;
+    }
+
+    .timetables-button {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        align-items: center;
+        width: 43vw;
+        height: 30vh;
+        margin: 2px 2px 2px 2px;
+        border-style: solid; /*Determine the type of border */
+        border-width: 5px;
+        border-radius: 12px
+    }
+
+    .green {
+        border-color: #86BE3D;
+
+    }
+    .blue {
+        border-color: #36A7E9;
+    }
+    .individual-timetables-desktop {display: none;} /*Hidden DESKTOP layout */
+
+    .desktop-route-map {display: none;}
+
+
+
+
+                            /*FARES PAGE*/
+
+    .fares-info {
+        display: flex;
+        width: 100%;
+        height: auto; /*Setting one of the two (width or height) to 'auto' helps keep the ratio*/
+    }
+    .fares-desktop {display: none;}
+
+
+                            /*HELP PAGE*/
+
+    .help-desktop {display: none;}
+    .FAQs-mobile {
+        display: flex;
+        width: 100%;
+        height: auto;
+    }
+
+    .support-call {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        background-image: url(GoHorizons%20Low%20Opacity%20Multiple%20Arrow%20Background.png);
+        background-size: 60vh; /* 'vh' = View Height = Responsive */
+    }
+
+
+                        /*FEEDBACK PAGE*/
+
+    .feedback-desktop {display: none;}
+    .feedback-text {
+        margin: 20px;
+        margin-top: 0px;
+    }
+    .feedback-form {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        flex-direction: column;
+    }
+
+    .feedback-form input, .feedback-form textarea {
+        border: 4px solid #B1CFF0;
+        padding: 8px 10px;
+        margin: 5px;
+        width: 60vw;
+
+        border-radius: 5px;
+        font-size: 15px;
+    }
+
+    .name, .feedback {
+        display: flex;
+        text-align: center;
+    }
+
+    .submit-button {
+        background-color: #86BE3D;
+        width: 30vw !important;
+        border: none !important; /* '!important' overides */
+    }
+
+
+                        /*FAVOURITES PAGE*/
+
+    .favourite-page-title {
+        display: flex;
+        justify-content: center;
+        color: #FFDC01;
+        background-color: #36A7E9;
+    }
+
+    .favourites-table {
+        border-collapse: collapse; /* Eliminate duplicate borders */
+        width: 100vw;
+    }
+
+    .favourites-table tr, .favourites-table td, .favourites-table th /* Saving time by styling for all three tags at the same time */ {
+        border: 1px solid #dddddd;
+        padding: 12px;
+        text-align: left;
+    }
+
+
+                    /*SEARCH-RESULT PAGE*/
+
+     .result {
+        display: flex;
+        flex-direction: column;
+        border: solid 5px blue; /*Shorthand of 'border' property */
+        border-radius: 5px;
+        margin: 5px;
+        padding: 10px;
+    }
+    .all-results-desktop {display: none;}
+
+        /* SEARCH_EXAMPLES */
+        .route-details {
+            display: flex;
+            width: 100vw;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .examples {
+            display: flex;
+            width: 80vw;
+            margin: 20px;
+        }
+        .route-details-desktop {display: none;}
+
+}
+
+@media (min-width: 600px) /* DESKTOP View */ {
+
+                            /* GENERAL */
+
+    .menu {
+        display: flex;
+        width: 100%;
+        background-color: #36A7E9;
+        justify-content: center;
+        align-items: center;
+    }
+
+        .menu-icons-box {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 14.285714vw;
+        }
+
+        .menu-icons {
+            width: 50px;
+            padding: 15px;
+        }
+        .menu section:hover, .menu a:active {
+            background-color: #FFDC01;
+        }
+        .menu a:link {text-decoration: none; color: black;} /* Remove default decoration from links */
+        .menu a:visited {color: black;} /* Keep visited links in black colour */
+        .menu p {margin: 0px 0px 10px 0px}
+        .favourite {background-color: #E3251B;}
+
+    .menu-button-area, .favourites-area {display: none;}
+
+                        /*HOME*/
+
+    .from-to {display: none;}
+
+    .menu-and-icons {display: flex; align-items: center;}
+        .bus-icon-area {
+            display: flex;
+            width: 20%;
+            padding: 10px;
+            margin-left: 30px;
+        }
+    .from-to-desktop {
+        display: flex;
+        width: 100%;
+    }
+        .from-to-text {width: 40%;}
+            .from {
+                text-align: right;
+                padding: 5px;
+            }
+
+            .to {
+                text-align: right;
+                padding: 5px;
+            }
+
+        .from-to-input {
+            width: 90%;
+        }
+
+
+    .from-to-desktop input, .from-to-desktop textarea {
+        border: 4px solid #B1CFF0;
+        padding: 10px 10px;
+        margin: 7px;
+        width: 45vw; /* 'vw' = View width = Responsive */
+
+        border-radius: 5px;
+        font-size: 15px;
+    }
+
+
+                    /*ACCOUNT*/
+
+    .menu-and-icons {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+    }
+    .user-icon-area {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 20vh;
+        width: 20vh;
+        border-radius: 10vh;
+        background-color: grey;
+        margin-top: 9vh;
+        margin-left: 3vh;
+    }
+    .user-icon {height: 10vh; width: auto;}
+
+    .user-info {display: none;}
+    .user-info-desktop {
+        display: flex;
+        margin-top: 9vh;
+        margin-left: 5vw;
+        flex-wrap: wrap;
+        padding: 10px;
+        font-size: 20px;
+        width: 30vh;
+    }
+        .email, .no-of-favourites /*Economising*/ {width: 100%;}
+
+    .log-out {margin-top: 9vh;}
+
+
+                    /*TIMETABLES PAGE*/
+
+    .individual-timetables {display: none;}
+    .individual-timetables-desktop-area {
+        display: flex;
+        width: 100vw;
+        justify-content: space-around;
+        background-image: url(GoHorizons%20Arrow%20Background%20Low%20Opacity.png);
+    }
+    .individual-timetables-desktop {
+        display: flex;
+        width: 100%;
+    }
+    .back {background-color: #FFDC01;}
+
+    .desktop-route-map {
+        width: 100vw;
+    }
+    .timetables {display: none;}
+
+                    /*FARES PAGE*/
+
+    .fares, .fares-info {display: none;}
+    .fares-desktop {
+        display: flex;
+        width: 100%;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        background-image: url(GoHorizons%20Low%20Opacity%20Multiple%20Arrow%20Background.png)
+    }
+
+                    /*HELP PAGE*/
+    .mobile, .FAQs-mobile {display: none;}
+    .help-desktop {
+        display: flex;
+        width: 100%;
+        flex-wrap: wrap;
+        justify-content: space-around; /* Useful flexbox feature. Allows you to do a couple of layout easily */
+        align-items: center;
+        text-align: center;
+        background-image: url(GoHorizons%20Low%20Opacity%20Multiple%20Arrow%20Background.png)
+    }
+    .support-call-desktop {
+        padding: 200px 50px 0px 50px;
+        margin: 10px;
+        height: 400px;
+        background-color: #86BE3D;
+    }
+
+                        /*FEEDBACK PAGE*/
+
+    .feedback-text, .feedback-form /*Economising*/ {display: none;}
+    .feedback-text-desktop {
+        margin: 20px;
+        margin-top: 0px;
+        display: flex;
+        justify-content: center;
+
+    }
+    .feedback-form-desktop {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        flex-direction: column;
+    }
+
+    .feedback-form-desktop input, .feedback-form-desktop textarea /* Styling to both classes at the same time */{
+        border: 4px solid #B1CFF0;
+        padding: 8px 10px;
+        margin: 5px;
+        width: 550px;
+
+        border-radius: 5px;
+        font-size: 15px;
+    }
+
+    .name, .feedback {
+        display: flex;
+        text-align: center;
+    }
+
+    .submit-button {
+        background-color: #86BE3D;
+        width: 30vw !important; /* '!iimportant' is a override code */
+        border: none !important;
+    }
+
+                /*FAVOURITES PAGE*/
+
+    .favourite-page-title {
+        display: flex;
+        justify-content: center;
+        color: #E3251B;
+        background-image: url(GoHorizons%20Low%20Opacity%20Multiple%20Arrow%20Background.png);
+        background-size: 750px;
+        font-size: 25px
+    }
+
+    .favourites-table {
+        border-collapse: collapse;
+        width: 100vw;
+    }
+
+    .favourites-table tr, .favourites-table td, .favourites-table th /* Saving time by styling for all three tags at the same time */ {
+        border: 1px solid #dddddd;
+        padding: 12px;
+        text-align: left;
+    }
+
+            /*SEARCH-RESULT-PAGE*/
+
+    .result {display: none;}
+    .all-results-desktop {
+        display: flex;
+        width: 100vw;
+    }
+    .result-desktop {
+        display: flex;
+        flex-direction: column;
+        border: solid 5px blue;
+        border-radius: 5px;
+        margin: 5px;
+        padding: 10px;
+        width: 50vw;
+    }
+
+        /*SEARCH EXAMPLES*/
+        .route-details {display: none;}
+        .route-details-desktop {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+        }
+        .examples-desktop {
+            display: flex;
+            width: 95vw;
+            margin: 20px;
+            padding: 10px;
+        }
+
+}

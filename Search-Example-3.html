@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>title</title>
+  <link rel="stylesheet" href="stylesheet.css" type="text/css">
+  </head>
+  <body>
+      <div class="outside-most-box">
+          <div class="bus-cond">
+              <img src="info.png" class="info-icon">
+              <p class="updates">UPDATES ON BUSES CONDITIONS</p>
+          </div>
+
+          <!--HIDDEN MENU-->
+          <div class="menu">
+              <a href="index.html">
+                  <div class="menu-icons-box">
+                      <img src=home.png class="menu-icons">
+                      <p>Home</p>
+                  </div>
+              </a>
+              <a href="account.html">
+                  <div class="menu-icons-box">
+                      <img src=user.png class="menu-icons">
+                      <p>Account</p>
+                  </div>
+              </a>
+              <a href="timetables.html">
+                  <div class="menu-icons-box">
+                      <img src=calendar.png class="menu-icons">
+                      <p>Timetables</p>
+                  </div>
+              </a>
+              <a href="fares.html">
+                  <div class="menu-icons-box">
+                      <img src=coins.png class="menu-icons">
+                      <p>Fares</p>
+                  </div>
+              </a>
+              <a href="help.html">
+                  <div class="menu-icons-box">
+                      <img src=info%20(1).png class="menu-icons">
+                      <p>Help</p>
+                  </div>
+              </a>
+              <a href="feedback.html">
+                  <div class="menu-icons-box">
+                      <img src=chat.png class="menu-icons">
+                      <p>Feedback</p>
+                  </div>
+              </a>
+              <a href="favourites-page.html">
+                  <div class="menu-icons-box favourite">
+                      <img src=favorite-heart-button.png class="menu-icons">
+                      <p>Favourites</p>
+                  </div>
+              </a>
+          </div>
+          <!--HIDDEN MENU-->
+
+          <div class="menu-and-icons">
+              <div class="menu-button-area"><img id="menu" class="menu-button" src="menu.png" style="height: 3vh;"></div>
+              <div class="favourites-area"><a href="favourites-page.html"><img class="favourite-icon" src="favourite-icon.png" style="height: 3.5vh"></a></div>
+
+          </div>
+
+           <div class="back-box">
+              <a href="search-result-page.html"><div class="back">
+                  <img class="back-arrow" src="left-arrow.png">
+                  <p class="back-text">Back</p>
+              </div></a>
+          </div>
+
+          <div class="route-details">
+              <img class="examples" src="Search-Option-Example3_Mobile.png">
+              <img class="examples" src="Search-Option-Example3_MobileMap.png">
+          </div>
+
+          <div class="route-details-desktop">
+              <img class="examples-desktop" src="Search-Option-Example3.PNG">
+          </div>
+      </div>
+
+      <script>
+          var body = document.getElementsByTagName("body")[0];
+          document.querySelector("#menu").addEventListener("click",toggleclass);
+          function toggleclass() {
+              body.classList.toggle("active")
+          }
+
+      </script>
+
+  </body>
+</html>

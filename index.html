@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Home</title>
+  <link rel="stylesheet" href="stylesheet.css" type="text/css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  </head>
+  <body>
+
+      <main class="outside-most-box"> <!--The box the holds everything -->
+
+          <section class="bus-cond">
+              <img src="info.png" class="info-icon">
+              <p class="updates">UPDATES ON BUSES CONDITIONS</p>
+          </section>
+
+          <!--HIDDEN MENU-->
+          <nav class="menu">
+              <a href="index.html">
+                  <section class="menu-icons-box">
+                      <img src=home.png class="menu-icons">
+                      <p>Home</p>
+                  </section>
+              </a>
+              <a href="account.html">
+                  <section class="menu-icons-box">
+                      <img src=user.png class="menu-icons">
+                      <p>Account</p>
+                  </section>
+              </a>
+              <a href="timetables.html">
+                  <section class="menu-icons-box">
+                      <img src=calendar.png class="menu-icons">
+                      <p>Timetables</p>
+                  </section>
+              </a>
+              <a href="fares.html">
+                  <section class="menu-icons-box">
+                      <img src=coins.png class="menu-icons">
+                      <p>Fares</p>
+                  </section>
+              </a>
+              <a href="help.html">
+                  <section class="menu-icons-box">
+                      <img src=info%20(1).png class="menu-icons">
+                      <p>Help</p>
+                  </section>
+              </a>
+              <a href="feedback.html">
+                  <section class="menu-icons-box">
+                      <img src=chat.png class="menu-icons">
+                      <p>Feedback</p>
+                  </section>
+              </a>
+              <a href="favourites-page.html">
+                  <section class="menu-icons-box favourite">
+                      <img src=favorite-heart-button.png class="menu-icons">
+                      <p>Favourites</p>
+                  </section>
+              </a>
+          </nav>
+          <!--HIDDEN MENU-->
+
+          <section class="menu-and-icons" style="background-image: url(GoHorizons%20Low%20Opacity%20Multiple%20Arrow%20Background.png);"> <!-- The area that hold the menu button, main bus icon and the favourite icon -->
+              <section class="menu-button-area"><img id="menu" class="menu-button" src="menu.png" style="height: 3vh;"></section>
+              <section class="bus-icon-area"><img class="bus-icon" src=bus-icon.png></section>
+              <section class="favourites-area"><a href="favourites-page.html"><img class="favourite-icon" src="favourite-icon.png" style="height: 3.5vh"></a></section>
+
+              <section class="from-to-desktop"> <!--From-to input from user for DESKTOP view-->
+                  <section class="from-to-text">
+                      <section type="text" name="from" class="from"> <p>FROM:</p></section>
+                      <section class="to"><p>TO:</p></section>
+                  </section>
+                  <section class="from-to-input">
+                      <input type="text" name="from" class="from-input" placeholder="Departing location">
+                      <input type="text" name="to" class="to-input" placeholder="Destination">
+                  </section>
+              </section>
+
+          </section>
+
+          <section class="from-to"> <!-- From-to input from user for MOBILE view -->
+              <section class="from-to-text">
+                  <section type="text" name="from" class="from"> <p>FROM:</p></section>
+                  <section class="to"><p>TO:</p></section>
+              </section>
+              <section class="from-to-input">
+                  <input type="text" name="from" class="from-input" placeholder="Departing location">
+                  <input type="text" name="to" class="to-input" placeholder="Destination">
+              </section>
+          </section>
+
+          <section class="bus-slider"><a href=search-result-page.html> <!--Slider that would execute the code to find directions. Right now 'a' tag is being used to link the pages together -->
+              <input type="range" class="BusSlider" value="0" max="100">
+              </a>
+          </section>
+
+          <section class="map"> <!-- Intergrated Google Maps goes here -->
+          <img src="Map%20Placeholder.PNG" style="height: auto; width: 100%;">
+          </section>
+
+          <footer> <!--Copyright and references/credits -->
+              <section class="Copyright">Copyright &#9400; 2017 - Brian Huynh</section>
+              <section><u>Resources used:</u></section>
+              <section>Icons made by <a href="http://www.flaticon.com/authors/chris-veigt" title="Chris Veigt">Chris Veigt</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a> (Information Icon for Bus Condition)</section>
+              <section>Icons made by <a href="http://www.flaticon.com/authors/madebyoliver" title="Madebyoliver">Madebyoliver</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a> (Menu Home Icon)</section>
+              <section>Icons made by <a href="http://www.flaticon.com/authors/kirill-kazachek" title="Kirill Kazachek">Kirill Kazachek</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a> (Menu Account Icon)</section>
+              <section>Icons made by <a href="http://www.flaticon.com/authors/madebyoliver" title="Madebyoliver">Madebyoliver</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a> (Menu Timetables Icon)</section>
+              <section>Icons made by <a href="http://www.flaticon.com/authors/madebyoliver" title="Madebyoliver">Madebyoliver</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a> (Menu Fares Icon)</section>
+              <section>Icons made by <a href="http://www.flaticon.com/authors/madebyoliver" title="Madebyoliver">Madebyoliver</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a> (Menu Help Icon)</section>
+              <section>Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a> (Menu Feedback Icon)</section>
+              <section>Icons made by <a href="http://www.flaticon.com/authors/google" title="Google">Google</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a> (Favourite Icon)</section>
+              <section>Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a> (Green Bus Icon)</section>
+              <section>Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a> (Red Bus Slider Icon)</section>
+              <section>Map image taken from Google Maps</section>
+          </footer>
+
+      </main>
+
+      <script>
+          //Script for the sliding menu in MOBILE view
+          var body = document.getElementsByTagName("body")[0];
+          document.querySelector("#menu").addEventListener("click",toggleclass);
+          function toggleclass() {
+              body.classList.toggle("active")
+          }
+
+      </script>
+
+      <script>
+          $(document).ready (function() {
+              $(".bus-icon").fadeToggle(1000).fadeToggle(1000);
+          });
+      </script>
+  </body>
+</html>
