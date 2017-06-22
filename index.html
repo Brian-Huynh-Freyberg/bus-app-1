@@ -88,16 +88,24 @@
                   <section class="to"><p>TO:</p></section>
               </section>
               <section class="from-to-input">
-                  <select class="route">
-                          <option>Please choose a route</option>
-                          <option>1.Awapuni / 2.Rugby</option>
-                          <option>3.Highbury / 4.Takaro</option>
-                          <option>5.Cloverlea / 6.Milson</option>
-                          <option>7.Rhodes / 8.Roslyn</option>
-                          <option>9.Rangiora / 10.Brightwater</option>
-                          <option>31.Fernlea / 32.Heights</option>
-                      </select>
-                  <input type="text" name="from" class="from-input" placeholder="Departing location">
+                  <select class="route" id="routes" onchange="getRoute()">
+                          <option value = "" disabled selected>Please choose a route</option>
+                          <option>1. Awapuni</option>
+                          <option>2. Rugby</option>
+                          <option>3. Highbury</option>
+                          <option>4. Takaro</option>
+                          <option>5. Cloverlea</option>
+                          <option>6. Milson</option>
+                          <option>7. Rhodes</option>
+                          <option>8. Roslyn</option>
+                          <option>9. Rangiora</option>
+                          <option>10. Brightwater</option>
+                          <option>31. Fernlea</option>
+                          <option>32. Heights</option>
+                  </select>
+                  <select class="from-input" id="from-location">
+                      <option value="" disabled selected>Departing bus stop</option>
+                  </select>
                   <input type="text" name="to" class="to-input" placeholder="Destination">
               </section>
           </section>
@@ -144,5 +152,7 @@
               $(".bus-icon").fadeToggle(1000).fadeToggle(1000);
           });
       </script>
+      <script src="script.js"></script>
+      <script src="bus-stops-and-times-final.js"></script>
   </body>
 </html>
