@@ -3,10 +3,10 @@
 var awapuniStops = [
                 "Depart MST",
                 "Park Rd",
-                "College Street",
+                "College Street (178)",
                 "Pitman Rd",
                 "Maxwells Line",
-                "College Street",
+                "College Street (40)",
                 "Rugby Street",
                 "Ferguson Street",
                 "Arrive MST"];
@@ -249,9 +249,9 @@ var milsonTimesSun = [
 var rhodesStops = ["Depart MST",
                "Rangitiket St",
                "Tremaine Ave",
-               "Kelvin Grove",
+               "Kelvin Grove Rd (61)",
                "Rhodes Dr",
-               "Kelvin Grove",
+               "Kelvin Grove Rd (6)",
                "Vogel St",
                "Featherson St",
                "Arrive MST"]
@@ -371,13 +371,13 @@ var brightwaterTimesSun = [
 
 var fernleaStops = [
                 "Depart MST",
-                "Main ST",
+                "Main St (73)",
                 "Roberts Line (29)",
                 "Brooklyn Heights (53)",
                 "Roberts Line (124)",
                 "Mihaere Drive",
                 "Napier Road",
-                "Main St",
+                "Main St (678)",
                 "Arrive MST"
                 ];
 var fernleaTimesMonFri =[
@@ -411,13 +411,13 @@ var fernleaTimesSun = []; //None
 
 var heightsStops = [
                 "Depart MST",
-                "Main ST",
+                "Main St (673)",
                 "Napier Rd Cemetary",
                 "Mihaere Dr",
                 "Roberts Line",
                 "Brooklyn Heights",
                 "Roberts Line",
-                "Main St",
+                "Main St (806)",
                 "Arrive MST"
                 ];
 var heightsTimesMonFri =[

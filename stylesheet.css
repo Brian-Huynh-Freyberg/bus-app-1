@@ -285,7 +285,7 @@ input[type="range"]::-webkit-slider-thumb /*The sliding bus*/{
         }
 
 
-    .from-to input, .from-to textarea, .route, .from-input {
+    .from-to input, .from-to textarea, .route, .from-input, .to-input {
         border: 4px solid #B1CFF0;
         padding: 10px 10px;
         margin: 7px;

@@ -103,10 +103,12 @@
                           <option>Fernlea</option>
                           <option>Heights</option>
                   </select>
-                  <select class="from-input" id="from-location">
+                  <select class="from-input" id="from-location" onchange="getArrival()">
                       <option value="" disabled selected>Departing bus stop</option>
                   </select>
-                  <input type="text" name="to" class="to-input" placeholder="Destination">
+                  <select class="to-input" id="to-location">
+                      <option value="" disabled selected>Arriving at</option>
+                  </select>
               </section>
           </section>
 
