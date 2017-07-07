@@ -1,3 +1,53 @@
+//CLASS
+class Bus {
+    constructor (name, stops, timesMonFri, timesFri, timesSat, timesSun) {
+        this.name = name;
+        this.stops = stops;
+        this.timesMonFri = timesMonFri;
+        this.timesFri = timesFri;
+        this.timesSat = timesSat;
+        this.timesSun = timesSun;
+    }
+}
+
+//var awapuniBus = new Bus("Awapuni", data.stops["awapuni"]);
+//console.log(data.stops["awapuni"]);
+
+//Array of buses name for loop below
+var buses = [
+    "awapuni",
+    "rugby",
+    "highbury",
+    "takaro",
+    "cloverlea",
+    "milson",
+    "rhodes",
+    "roslyn",
+    "rangiora",
+    "brightwater",
+    "fernlea",
+    "heights"
+];
+
+//Loop to create bus objects
+var routes = {};
+for (var i = 0; i < buses.length; i++) {
+    var name = buses[i];
+
+    var newRoute = new Bus (
+        name,
+        data.stops[name],
+//        data.stopCoordinates[name],
+        data.colors[name],
+        data.timesMonFri[name],
+        data.timesFri[name],
+        data.timesSat[name],
+        data.timesSun[name]
+    );
+
+    routes[name] = newRoute;
+}
+
 //Grab DOM elements and store into variables
 var routeSelection = document.getElementById("routes");
 //console.log(routeSelection)
@@ -8,22 +58,21 @@ var toLocation = document.getElementById("to-location");
 
 //Get the user selected route - Run everytime the selection is changed
 function getRoute () {
-    userRoute = routeSelection.options[routeSelection.selectedIndex].text;
+    userRoute = routeSelection.options[routeSelection.selectedIndex].text
     userRoute = userRoute.toLowerCase();
-    userRoute += "Stops";
     console.log(userRoute);
 
     //Inserting the stops to the departure selection
-    fromLocation.innerHTML = getStops();
+//    fromLocation.innerHTML = getStops();
 
-    function getStops () {
-        var content = "<option value = '' disabled selected>";
-        for (var i = 0; i < eval(userRoute).length; i++) {
-            content += "<option>" + eval(userRoute)[i] + "</option>"
+//    function getStops () {
+        var content = "<option value = '' disabled selected></option>";
+        for (var i = 0; i < routes[userRoute].stops.length; i++) {
+            content += "<option>" + routes[userRoute].stops[i] + "</option>"
         };
-        content += "</option>"
-        return content
-    }
+//        content += "</option>"
+        fromLocation.innerHTML = content
+//    }
 
 }
 
@@ -33,11 +82,11 @@ function getArrival() {
     console.log(userDeparture);
 
     //Get the index number of the selected departing stop in the array
-    var userDepartureIndex = eval(userRoute).indexOf(userDeparture);
+    var userDepartureIndex = routes[userRoute].stops.indexOf(userDeparture);
     console.log(userDepartureIndex);
 
     //Getting the remaining stops
-    var remainingStops = eval(userRoute).slice(userDepartureIndex);
+    var remainingStops = routes[userRoute].stops.slice(userDepartureIndex);
     remainingStops.shift();
     console.log(remainingStops);
 
