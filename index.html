@@ -106,15 +106,15 @@
                   <select class="from-input" id="from-location" onchange="getArrival()">
                       <option value="" disabled selected>Departing bus stop</option>
                   </select>
-                  <select class="to-input" id="to-location">
+                  <select class="to-input" id="to-location" onchange="arrivalTime()">
                       <option value="" disabled selected>Arriving at</option>
                   </select>
               </section>
           </section>
 
-          <section class="bus-slider"><a href=search-result-page.html> <!--Slider that would execute the code to find directions. Right now 'a' tag is being used to link the pages together -->
-              <input type="range" class="BusSlider" value="0" max="100">
-              </a>
+          <section class="bus-slider"> <!--Slider that would execute the code to find directions. Right now 'a' tag is being used to link the pages together -->
+              <input type="range" class="BusSlider" value="0" max="100" onchange="getTimes()">
+
           </section>
 
           <section class="map"> <!-- Intergrated Google Maps goes here -->
@@ -156,5 +156,6 @@
       </script>
       <script src="bus-stops-and-times-final-NEW.js"></script>
       <script src="script.js"></script>
+<!--      <script>$(document).ready(homePage)</script>-->
   </body>
 </html>
