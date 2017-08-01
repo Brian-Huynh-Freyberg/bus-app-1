@@ -6,6 +6,7 @@
     <title>Home</title>
   <link rel="stylesheet" href="stylesheet.css" type="text/css">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBbOy6PPYJuQMUvACG-DqimtC5AHCrcWc4&libraries=places"></script>
   </head>
   <body>
 
@@ -114,10 +115,9 @@
 
           <section class="bus-slider"> <!--Slider that would execute the code to find directions. Right now 'a' tag is being used to link the pages together -->
               <input type="range" class="BusSlider" value="0" max="100" onchange="getTimes()">
-
           </section>
 
-          <section class="map"> <!-- Intergrated Google Maps goes here -->
+          <section class="map" id="map"> <!-- Intergrated Google Maps goes here -->
           <img src="Map%20Placeholder.PNG" style="height: auto; width: 100%;">
           </section>
 
@@ -156,6 +156,5 @@
       </script>
       <script src="bus-stops-and-times-final-NEW.js"></script>
       <script src="script.js"></script>
-<!--      <script>$(document).ready(homePage)</script>-->
   </body>
 </html>
