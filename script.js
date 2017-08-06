@@ -50,7 +50,6 @@ for (var i = 0; i < buses.length; i++) {
 
 //Grab DOM elements and store into variables
 var routeSelection = document.getElementById("routes");
-//console.log(routeSelection)
 var userRoute;
 var fromLocation = document.getElementById("from-location");
 var userDeparture;
@@ -59,12 +58,17 @@ var userDepartureIndex;
 var userArrival;
 var userArrivalIndex;
 var remainingStops;
+var busSlider= document.getElementById("bus-slider");
+//Counters for the three selection boxes
+var flag1;
+var flag2;
+var flag3;
 
 //Google Maps
 var theSquare = {
-        lat: -40.353085,
-        lng: 175.610677
-    }
+    lat: -40.353085,
+    lng: 175.610677
+}
 
     //Create a new Map object
     window.map = new google.maps.Map(document.getElementById('map'), {
@@ -72,7 +76,7 @@ var theSquare = {
         zoom: 13
     })
 
-//Get the user selected route - Run everytime the selection is changed
+//Get the user selected route - Run every time the selection is changed
 function getRoute () {
     userRoute = routeSelection.options[routeSelection.selectedIndex].text
     sessionStorage.setItem("User Route", userRoute);
@@ -80,16 +84,12 @@ function getRoute () {
     console.log(userRoute);
 
     //Inserting the stops to the departure selection
-//    fromLocation.innerHTML = getStops();
-
-//    function getStops () {
-        var content = "<option value = '' disabled selected></option>";
-        for (var i = 0; i < routes[userRoute].stops.length; i++) {
-            content += "<option>" + routes[userRoute].stops[i] + "</option>"
-        };
-//        content += "</option>"
-        fromLocation.innerHTML = content
-//    }
+    var content = "<option value = '' disabled selected></option>";
+    for (var i = 0; i < routes[userRoute].stops.length; i++) {
+        content += "<option>" + routes[userRoute].stops[i] + "</option>"
+    };
+    fromLocation.innerHTML = content
+    flag1 = 1;
 
 }
 
@@ -109,16 +109,13 @@ function getArrival() {
     console.log(remainingStops);
 
     //Inserting the remaining stops into the selection box
-    toLocation.innerHTML = getRemainingStops();
+    var content = "<option value = '' disabled selected></option>";
+    for (var i = 0; i < remainingStops.length; i++) {
+        content += "<option>" + remainingStops[i] + "</option>"
+    };
 
-    function getRemainingStops () {
-        var content = "<option value = '' disabled selected>";
-        for (var i = 0; i < remainingStops.length; i++) {
-            content += "<option>" + remainingStops[i] + "</option>"
-        };
-        content += "</option>"
-        return content
-    }
+    toLocation.innerHTML = content;
+    flag2 = 1;
 }
 
 function arrivalTime() {
@@ -130,6 +127,10 @@ function arrivalTime() {
     console.log(userArrivalIndex);
 
     sessionStorage.setItem("Arrival Stop", userArrival);
+    flag3 = 1;
+    if (flag1 == 1 && flag2 == 1 && flag3 == 1) {
+       busSlider.style.display = "block";
+    }
 }
 
 function getTimes() {
@@ -139,18 +140,23 @@ function getTimes() {
         console.log(dayOfWeek);
 
         //Getting the the correct timetable and first time for the selected stop for tomorrow
-        if (dayOfWeek > -1 && dayOfWeek < 5) {
+        //Monday - Thursday
+        if (dayOfWeek > 0 && dayOfWeek < 5) {
             var timestableOfDay = routes[userRoute].timesMonFri;
             var nextFirstTime = routes[userRoute].timesMonFri[0][userDepartureIndex];
+            nextFirstTime = nextFirstTime.toFixed(2);
             console.log(nextFirstTime);
             sessionStorage.setItem("Next First Departure", nextFirstTime);
         }
+        //Friday
         else if (dayOfWeek == 5) {
             var timestableOfDay = routes[userRoute].timesMonFri.concat(routes[userRoute].timesFri);
             var nextFirstTime = routes[userRoute].timesSat[0][userDepartureIndex];
+            nextFirstTime = nextFirstTime.toFixed(2);
             console.log(nextFirstTime);
             sessionStorage.setItem("Next First Departure", nextFirstTime);
         }
+        //Saturday
         else if (dayOfWeek == 6) {
             var timestableOfDay = routes[userRoute].timesSat;
             var nextFirstTime = routes[userRoute].timesSun[0][userDepartureIndex];
@@ -158,18 +164,19 @@ function getTimes() {
             console.log(nextFirstTime);
             sessionStorage.setItem("Next First Departure", nextFirstTime);
         }
-        else if (dayOfWeek == 7) {
+        //Sunday
+        else if (dayOfWeek == 0) {
             var timestableOfDay = routes[userRoute].timesSun;
             var nextFirstTime = routes[userRoute].timesMonFri[0][userDepartureIndex];
+            nextFirstTime = nextFirstTime.toFixed(2);
             console.log(nextFirstTime);
             sessionStorage.setItem("Next First Departure", nextFirstTime);
         }
         //Looping through the timetable to get the times
         for (var i = 0; i < timestableOfDay.length; i++) {
+            var homeOnlyTime = timestableOfDay[timestableOfDay.length - 1];
+            sessionStorage.setItem("Home Only Time", homeOnlyTime);
             if (timeNow < timestableOfDay[i][userDepartureIndex]) {
-                var homeOnlyTime = timestableOfDay[timestableOfDay.length - 1];
-                sessionStorage.setItem("Home Only Time", homeOnlyTime);
-                //array[array.length - 1]
                 var nextDepartingTime = timestableOfDay[i][userDepartureIndex];
                 nextDepartingTime = nextDepartingTime.toFixed(2);
                 console.log (nextDepartingTime);
@@ -184,82 +191,6 @@ function getTimes() {
                 break;
             }
         }
-//        if (dayOfWeek > -1 && dayOfWeek < 5) {
-//            var nextFirstTime = routes[userRoute].timesMonFri[0][userDepartureIndex];
-//            console.log(nextFirstTime);
-//            for (var i = 0; i < routes[userRoute].timesMonFri.length; i++) {
-//                if (timeNow < routes[userRoute].timesMonFri[i][userDepartureIndex]) {
-//                    var nextDepartingTime = routes[userRoute].timesMonFri[i][userDepartureIndex];
-//                    nextDepartingTime = nextDepartingTime.toFixed(2);
-//                    console.log (nextDepartingTime);
-//                    var nextArrivalTime = routes[userRoute].timesMonFri[i][userDepartureIndex + userArrivalIndex];
-//                    nextArrivalTime = nextArrivalTime.toFixed(2);
-//                    console.log (nextArrivalTime);
-//                    var followingDepartingTime = routes[userRoute].timesMonFri[i+1][userDepartureIndex];
-//                    followingDepartingTime = followingDepartingTime.toFixed(2);
-//                    break;
-//                }
-//            }
-//        }
-//
-//        else if (dayOfWeek == 5) {
-//            var nextFirstTime = routes[userRoute].timesSat[0][userDepartureIndex];
-//            console.log(nextFirstTime);
-//            var friMergedTimes = routes[userRoute].timesMonFri.concat(routes[userRoute].timesFri);
-//            console.log(friMergedTimes);
-//            for (var i = 0; i < friMergedTimes.length; i++) {
-//                if (timeNow < friMergedTimes[i][userDepartureIndex]) {
-//                    var nextDepartingTime = friMergedTimes[i][userDepartureIndex];
-//                    console.log (nextDepartingTime);
-//                    nextDepartingTime = nextDepartingTime.toFixed(2);
-//                    sessionStorage.setItem("Next Departure", nextDepartingTime);
-//                    var nextArrivalTime = friMergedTimes[i][userDepartureIndex + userArrivalIndex];
-//                    nextArrivalTime = nextArrivalTime.toFixed(2);
-//                    console.log (nextArrivalTime);
-//                    var followingDepartingTime = friMergedTimes[i+1][userDepartureIndex];
-//                    followingDepartingTime = followingDepartingTime.toFixed(2);
-//                    break;
-//                }
-//            }
-//        }
-//        else if (dayOfWeek == 6) {
-//            var nextFirstTime = routes[userRoute].timesSun[0][userDepartureIndex];
-//            console.log(nextFirstTime);
-//            for (var i = 0; i < routes[userRoute].timesSat.length; i++) {
-//                if (timeNow < routes[userRoute].timesSat[i][userDepartureIndex]) {
-//                    var nextDepartingTime = routes[userRoute].timesSat[i][userDepartureIndex];
-//                    nextDepartingTime = nextDepartingTime.toFixed(2);
-//                    console.log (nextDepartingTime);
-//                    var nextArrivalTime = routes[userRoute].timesSat[i][userDepartureIndex + userArrivalIndex];
-//                    nextArrivalTime = nextArrivalTime.toFixed(2);
-//                    console.log (nextArrivalTime);
-//                    var followingDepartingTime = routes[userRoute].timesSat[i+1][userDepartureIndex];
-//                    followingDepartingTime = followingDepartingTime.toFixed(2);
-//                    break;
-//                }
-//            }
-//        }
-//        else if (dayOfWeek == 7) {
-//            var nextFirstTime = routes[userRoute].timesMonFri[0][userDepartureIndex];
-//            console.log(nextFirstTime);
-//            for (var i = 0; i < routes[userRoute].timesSun.length; i++) {
-//                if (timeNow < routes[userRoute].timesSun[i][userDepartureIndex]) {
-//                    var nextDepartingTime = routes[userRoute].timesSun[i][userDepartureIndex];
-//                    nextDepartingTime = nextDepartingTime.toFixed(2);
-//                    console.log (nextDepartingTime);
-//                    var nextArrivalTime = routes[userRoute].timesSun[i][userDepartureIndex + userArrivalIndex];
-//                    nextArrivalTime = nextArrivalTime.toFixed(2);
-//                    console.log (nextArrivalTime);
-//                    var followingDepartingTime = routes[userRoute].timesSun[i+1][userDepartureIndex];
-//                    followingDepartingTime = followingDepartingTime.toFixed(2);
-//                    break;
-//                }
-//            }
-//        }
-//
-//
-//    var nextDeparture = sessionStorage.getItem("Next Departure");
-//    console.log(nextDeparture);
 
     }
 
@@ -268,9 +199,10 @@ document.querySelector("input[type=\"range\"]").onmouseup = function() {
     var theRange = this.value;
     if(theRange == 100) {
 
-			unlock();
+			loadNew();
 
 		} else {
+            //Decrements the current value by 1 every 1 milisecond if the current value is not zero
 			document.init = setInterval(function() {
 				if(document.querySelector("input[type=\"range\"]").value != 0) {
 					document.querySelector("input[type=\"range\"]").value = theRange--;
@@ -279,11 +211,12 @@ document.querySelector("input[type=\"range\"]").onmouseup = function() {
 		}
 }
 
+//Clear the timer set above
 document.querySelector("input[type=\"range\"]").onmousedown = function() {
 		clearInterval(document.init);
 }
 
-function unlock() {
+function loadNew() {
     document.querySelector("input[type=\"range\"]").style.opacity = "0";
     location.href = "search-result-page.html";
 }
@@ -324,10 +257,27 @@ function resultsPage() {
     route.innerHTML = sessionStorage.getItem("User Route");
     homeOnlyTime.innerHTML = sessionStorage.getItem("Home Only Time");
 
-    //Countdown
+    //After hours
     var timeNow = new Date().getHours() + "." + ("0" + new Date().getMinutes()).slice(-2); //Get time now in H.MM
+    var dayOfWeek = new Date().getDay();
+        //Monday - Friday
+        if (dayOfWeek > 0 && dayOfWeek < 6) {
+            if (18.35 < timeNow && timeNow < 24.00) {
+                resultBox.style.display = "none";
+                afterHours.style.display = "block";
+            }
+        }
+        //Weekend
+        else if (dayOfWeek == 6 || dayOfWeek == 0) {
+            if (16.20 < timeNow && timeNow < 24.00) {
+                resultBox.style.display = "none";
+                afterHours.style.display = "block";
+            }
+        }
+
+    //Countdown
     console.log(timeNow);
-    var a = timeNow.split(".");
+    var a = timeNow.split("."); //Turn string into array
     var timeNowMinutes = (+a[0]) * 60 + (+a[1]); //Convert H.MM to MM
     console.log(timeNowMinutes);
     var nextDeparture = sessionStorage.getItem("Next Departure");
@@ -343,19 +293,4 @@ function resultsPage() {
     console.log(minutes);
 
     countdown.innerHTML = hours + "h" + "&nbsp;" + minutes + "m";
-
-    //After hours
-    var dayOfWeek = new Date().getDay();
-        if (dayOfWeek > -1 && dayOfWeek < 6) {
-            if (18.35 < timeNow && timeNow < 23.59) {
-                resultBox.style.display = "none";
-                afterHours.style.display = "block";
-            }
-        }
-        else if (dayOfWeek == 6 || dayOfWeek == 7) {
-            if (16.20 < timeNow && timeNow < 23.59) {
-                resultBox.style.display = "none";
-                afterHours.style.display = "block";
-            }
-        }
 }
